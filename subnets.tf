@@ -9,6 +9,16 @@ resource "aws_subnet" "public" {
     }
 }
 
+resource "aws_subnet" "public-b" {
+    vpc_id = aws_vpc.main.id
+    cidr_block = "192.168.10.0/24"
+    availability_zone = "us-east-1b"
+    map_public_ip_on_launch = true
+
+    tags = {
+        Name = "talent-academy-public-b"
+    }
+}
 
 resource "aws_subnet" "private_app" {
     vpc_id = aws_vpc.main.id
@@ -17,6 +27,16 @@ resource "aws_subnet" "private_app" {
 
     tags = {
         Name = "talent-academy-private_app"
+    }
+}
+
+resource "aws_subnet" "private_app_b" {
+    vpc_id = aws_vpc.main.id
+    cidr_block = "192.168.20.0/24"
+    availability_zone = "us-east-1c"
+
+    tags = {
+        Name = "talent-academy-private_app_b"
     }
 }
 
