@@ -16,3 +16,4 @@ resource "aws_instance" "publicec2" {
   tags = {
     Name = "talent-academy-publicec2"
   }
+}
