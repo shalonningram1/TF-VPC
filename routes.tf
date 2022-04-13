@@ -33,9 +33,21 @@ resource "aws_route_table_association" "internet_route_table_association_private
   route_table_id = aws_route_table.nat_route_table.id
 }
 
+# ASSOCIATE ROUTE TABLE -- PRIVATE_APP_B LAYER
+resource "aws_route_table_association" "internet_route_table_association_private_app" {
+  subnet_id      = aws_subnet.private_app_b.id
+  route_table_id = aws_route_table.nat_route_table.id
+}
+
 # ASSOCIATE ROUTE TABLE -- PUBLIC LAYER
 resource "aws_route_table_association" "internet_route_table_association_public" {
   subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.internet_route_table.id
+}
+
+# ASSOCIATE ROUTE TABLE -- PUBLIC LAYER_B
+resource "aws_route_table_association" "internet_route_table_association_public" {
+  subnet_id      = aws_subnet.public-b.id
   route_table_id = aws_route_table.internet_route_table.id
 }
 
